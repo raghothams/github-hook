@@ -5,11 +5,11 @@ import subprocess
 from flask import Flask, request, redirect, abort
 app = Flask(__name__)
 
-GITROOT = '/var/git/github'
+GITROOT = '/var/github'
 
 @app.route('/')
 def index():
-    return redirect('http://github.com/hasgeek/doctypehtml5')
+    return redirect('http://linkur.co.in')
 
 @app.route('/', methods=['POST'])
 def commit():
