@@ -5,7 +5,7 @@ import subprocess
 from flask import Flask, request, redirect, abort
 app = Flask(__name__)
 
-GITROOT = '/var/github'
+GITROOT = '/pathtoproject'
 
 @app.route('/')
 def index():
