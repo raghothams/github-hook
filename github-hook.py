@@ -5,7 +5,7 @@ import subprocess
 from flask import Flask, request, redirect, abort
 app = Flask(__name__)
 
-GITROOT = '/pathtoproject'
+GITROOT = '/var/github/'
 
 @app.route('/')
 def index():
@@ -20,6 +20,8 @@ def commit():
     reponame = payload['repository']['name']
     savedir = os.getcwd()
     repodir = os.path.join(GITROOT, reponame)
+    print repodir
+
     if os.access(repodir, os.W_OK | os.X_OK):
         os.chdir(repodir)
         process = subprocess.Popen(['git', 'pull'], env=os.environ,
@@ -37,4 +39,4 @@ def commit():
 application = app # For WSGI
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', port=5010)
+    app.run('0.0.0.0', port=5010, debug=True)
